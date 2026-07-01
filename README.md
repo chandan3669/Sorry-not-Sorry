@@ -1,4 +1,4 @@
-# 🚀 ExcuseAI Backend  
+#SorryNotSorry AI Backend  
 
 <p align="center">
   <img src="https://media.giphy.com/media/ZVik7pBtu9dNS/giphy.gif" width="180" />
@@ -22,27 +22,27 @@
 
 ---
 
-## 📌 Overview
+## Overview
 
-ExcuseAI is a modern AI-powered backend built with FastAPI that generates creative excuses based on user inputs such as category, audience, tone, and length.
+ExcuseAI is a modern AI powered backend built with FastAPI that generates creative excuses based on user inputs such as category, audience, tone and length.
 
-It integrates with Google Gemini API, generates fun scoring metrics, and stores all excuses in SQLite for history tracking.
-
----
-
-## ✨ Features
-
-- 🤖 AI-generated excuses using Gemini
-- 🎭 Dynamic prompt generation
-- 📊 Believability, Drama & Risk scoring
-- 🗂 SQLite history storage
-- 📜 Fetch and delete excuse history
-- 🔐 Secure environment variable support
-- ⚡ FastAPI Swagger docs
-- 🛠 Clean modular architecture
-- 🔥 Multiple AI response generation
+It integrates with Google Gemini API, generates fun scoring metrics and stores all excuses in SQLite for history tracking.
 
 ---
+
+## Features
+
+- AI-generated excuses using Gemini
+- Dynamic prompt generation
+- Believability, Drama & Risk scoring
+- SQLite history storage
+- Fetch and delete excuse history
+- Secure environment variable support
+- FastAPI Swagger docs
+- Clean modular architecture
+- Multiple AI response generation
+
+
 
 ## 🛠 Tech Stack
 
@@ -58,7 +58,7 @@ It integrates with Google Gemini API, generates fun scoring metrics, and stores 
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```bash
 backend/
@@ -83,7 +83,7 @@ backend/
 
 ---
 
-## ⚙ Installation
+## Installation
 
 Clone the repository:
 
@@ -120,7 +120,7 @@ pip install -r requirements.txt
 
 ---
 
-## 🔑 Environment Setup
+## Environment Setup
 
 Create `.env`:
 
@@ -158,7 +158,7 @@ http://127.0.0.1:8000/docs
 
 ---
 
-## 📡 API Endpoints
+## API Endpoints
 
 ### Root
 
@@ -252,29 +252,29 @@ Deletes a saved excuse.
 
 ---
 
-## 🔄 Workflow
+## Workflow
 
 ```text
-🎨 Frontend
+    Frontend
    ↓
-📡 API Request
+     API Request
    ↓
-⚡ FastAPI Backend
+     FastAPI Backend
    ↓
-🧠 Prompt Builder
+     Prompt Builder
    ↓
-🤖 Gemini AI
+     Gemini AI
    ↓
-📊 Score Generator
+     Score Generator
    ↓
-🗄 SQLite Database
+     SQLite Database
    ↓
-📦 JSON Response
+     JSON Response
 ```
 
 ---
 
-## 🚀 Future Improvements
+## Future Improvements
 
 - AI Rewrite Mode
 - Excuse Analyzer
@@ -287,7 +287,7 @@ Deletes a saved excuse.
 
 ---
 
-## 👨‍💻 Team — CONFUSION Stack
+## Team — CONFUSION Stack
 
 | Member | Role |
 |---|---|
@@ -298,7 +298,7 @@ Deletes a saved excuse.
 
 ---
 
-## 📜 License
+##  License
 
 Built for **educational** and **entertainment** purposes.
 
@@ -307,5 +307,5 @@ Use responsibly.
 ---
 
 <p align="center">
-Made with ❤️ by CONFUSION Stack
+Made with efforts by CONFUSION Stack
 </p>
