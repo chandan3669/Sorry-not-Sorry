@@ -44,7 +44,7 @@ It integrates with Google Gemini API, generates fun scoring metrics and stores a
 
 
 
-## 🛠 Tech Stack
+## Tech Stack
 
 | Technology | Usage |
 |---|---|
