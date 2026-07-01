@@ -1,67 +1,208 @@
-# ExcuseAI Backend
+# 🚀 ExcuseAI Backend  
 
-ExcuseAI is a FastAPI backend for generating AI-powered excuses with fake fun metrics and SQLite history.
+<p align="center">
+  <img src="https://media.giphy.com/media/ZVik7pBtu9dNS/giphy.gif" width="180" />
+</p>
 
-## Features
+<p align="center">
+  <b>AI-powered excuse generation engine built with FastAPI + Gemini</b>
+</p>
 
-- Generate excuses from category, audience, tone, and length
-- Build dynamic Gemini prompts
-- Return believability, drama, and risk scores
-- Store generated excuses in SQLite
-- Fetch and delete excuse history
-- Environment-based API key loading with `python-dotenv`
+<p align="center">
+  Generate smart excuses • Track history • Score believability
+</p>
 
-## Setup
+<p align="center">
+<img src="https://img.shields.io/badge/Python-3.12-blue?logo=python"/>
+<img src="https://img.shields.io/badge/FastAPI-Backend-green?logo=fastapi"/>
+<img src="https://img.shields.io/badge/Gemini-AI-orange?logo=google"/>
+<img src="https://img.shields.io/badge/SQLite-Database-blue?logo=sqlite"/>
+<img src="https://img.shields.io/badge/License-Educational-purple"/>
+</p>
+
+---
+
+## 📌 Overview
+
+ExcuseAI is a modern AI-powered backend built with FastAPI that generates creative excuses based on user inputs such as category, audience, tone, and length.
+
+It integrates with Google Gemini API, generates fun scoring metrics, and stores all excuses in SQLite for history tracking.
+
+---
+
+## ✨ Features
+
+- 🤖 AI-generated excuses using Gemini
+- 🎭 Dynamic prompt generation
+- 📊 Believability, Drama & Risk scoring
+- 🗂 SQLite history storage
+- 📜 Fetch and delete excuse history
+- 🔐 Secure environment variable support
+- ⚡ FastAPI Swagger docs
+- 🛠 Clean modular architecture
+- 🔥 Multiple AI response generation
+
+---
+
+## 🛠 Tech Stack
+
+| Technology | Usage |
+|---|---|
+| Python | Core language |
+| FastAPI | Backend framework |
+| Gemini API | AI generation |
+| SQLite | Database |
+| SQLAlchemy | ORM |
+| Pydantic | Validation |
+| Uvicorn | Server |
+
+---
+
+## 📂 Project Structure
 
 ```bash
+backend/
+│── main.py
+│── routes/
+│   └── excuse.py
+│── services/
+│   ├── ai_service.py
+│   └── score_service.py
+│── prompts/
+│   └── prompt_builder.py
+│── models/
+│   └── excuse_model.py
+│── schemas/
+│   └── excuse_schema.py
+│── database/
+│   └── db.py
+│── .env.example
+│── requirements.txt
+└── README.md
+```
+
+---
+
+## ⚙ Installation
+
+Clone the repository:
+
+```bash
+git clone <your-repository-url>
 cd backend
+```
+
+Create virtual environment:
+
+```bash
 python -m venv .venv
+```
+
+Activate:
+
+### Windows
+
+```bash
 .venv\Scripts\activate
+```
+
+### Linux / Mac
+
+```bash
+source .venv/bin/activate
+```
+
+Install dependencies:
+
+```bash
 pip install -r requirements.txt
+```
+
+---
+
+## 🔑 Environment Setup
+
+Create `.env`:
+
+```bash
 copy .env.example .env
 ```
 
-Edit `.env` and set:
+Add your API key:
 
 ```env
 GEMINI_API_KEY=your_gemini_api_key_here
 ```
 
-Do not commit `.env` or hardcode secrets.
+⚠ Never commit `.env`
 
-## Run
+---
+
+## ▶ Running the Server
 
 ```bash
 uvicorn main:app --reload
 ```
 
-The API will run at:
+Server URL:
 
 ```text
 http://127.0.0.1:8000
 ```
 
-## Endpoints
+Swagger Docs:
 
-### `GET /`
-
-Returns a welcome message.
-
-### `GET /health`
-
-Returns:
-
-```json
-{"status": "ok"}
+```text
+http://127.0.0.1:8000/docs
 ```
 
-### `POST /generate`
+---
+
+## 📡 API Endpoints
+
+### Root
+
+```http
+GET /
+```
+
+Response:
+
+```json
+{
+  "message": "ExcuseAI Backend Running"
+}
+```
+
+---
+
+### Health Check
+
+```http
+GET /health
+```
+
+Response:
+
+```json
+{
+  "status": "ok"
+}
+```
+
+---
+
+### Generate Excuses
+
+```http
+POST /generate
+```
 
 Request:
 
 ```json
 {
-  "category": "Missed class",
+  "category": "Missed Class",
   "audience": "Professor",
   "tone": "Professional",
   "length": "Medium"
@@ -72,48 +213,99 @@ Response:
 
 ```json
 {
-  "excuse": "I apologize for missing class...",
-  "believability": 87,
-  "drama": 34,
-  "risk": 18
+  "responses": [
+    {
+      "id": 1,
+      "text": "Excuse 1..."
+    },
+    {
+      "id": 2,
+      "text": "Excuse 2..."
+    },
+    {
+      "id": 3,
+      "text": "Excuse 3..."
+    }
+  ]
 }
 ```
 
-If `GEMINI_API_KEY` is missing, the API returns a clean error:
+---
 
-```json
-{
-  "detail": "GEMINI_API_KEY not found"
-}
+### Get History
+
+```http
+GET /history
 ```
 
-### `GET /history`
+Returns all saved excuses.
 
-Returns all saved excuses ordered by newest first.
+---
 
-### `DELETE /history/{id}`
+### Delete History
 
-Deletes a specific saved excuse.
+```http
+DELETE /history/{id}
+```
 
-## Project Structure
+Deletes a saved excuse.
+
+---
+
+## 🔄 Workflow
 
 ```text
-backend/
-|-- main.py
-|-- routes/
-|   `-- excuse.py
-|-- services/
-|   |-- ai_service.py
-|   `-- score_service.py
-|-- prompts/
-|   `-- prompt_builder.py
-|-- models/
-|   `-- excuse_model.py
-|-- schemas/
-|   `-- excuse_schema.py
-|-- database/
-|   `-- db.py
-|-- .env.example
-|-- requirements.txt
-`-- README.md
+🎨 Frontend
+   ↓
+📡 API Request
+   ↓
+⚡ FastAPI Backend
+   ↓
+🧠 Prompt Builder
+   ↓
+🤖 Gemini AI
+   ↓
+📊 Score Generator
+   ↓
+🗄 SQLite Database
+   ↓
+📦 JSON Response
 ```
+
+---
+
+## 🚀 Future Improvements
+
+- AI Rewrite Mode
+- Excuse Analyzer
+- Authentication System
+- Favorite Excuses
+- Multi-language Support
+- Custom Local LLM
+- Fine-tuned Own Model
+- AI Persona Mode
+
+---
+
+## 👨‍💻 Team — CONFUSION Stack
+
+| Member | Role |
+|---|---|
+| Chandan | Backend Developer |
+| Swapnil | AI Engineer |
+| Ranab | Frontend Developer |
+| Argha | UI/UX Designer |
+
+---
+
+## 📜 License
+
+Built for **educational** and **entertainment** purposes.
+
+Use responsibly.
+
+---
+
+<p align="center">
+Made with ❤️ by CONFUSION Stack
+</p>
