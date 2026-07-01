@@ -138,7 +138,7 @@ GEMINI_API_KEY=your_gemini_api_key_here
 
 ---
 
-## ▶ Running the Server
+## Running the Server
 
 ```bash
 uvicorn main:app --reload
