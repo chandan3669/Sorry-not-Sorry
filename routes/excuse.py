@@ -18,8 +18,34 @@ router = APIRouter()
 def create_excuse(request: ExcuseRequest, db: Session = Depends(get_db)):
     try:
         prompt = build_excuse_prompt(request)
-        excuse_text = generate_excuse(prompt)
-        scores = generate_scores()
+        excuses = generate_excuses(prompt)
+
+response = []
+
+for text in excuses:
+    scores = generate_scores()
+
+    excuse = Excuse(
+        category=request.category,
+        audience=request.audience,
+        tone=request.tone,
+        length=request.length,
+        excuse=text,
+        believability=scores["believability"],
+        drama=scores["drama"],
+        risk=scores["risk"],
+    )
+
+    db.add(excuse)
+
+    response.append({
+        "text": text,
+        **scores,
+    })
+
+db.commit()
+
+return {"excuses": response}
 
         excuse = Excuse(
             category=request.category.strip(),
