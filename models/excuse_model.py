@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from sqlalchemy import Column, DateTime, Integer, String, Text
+from sqlalchemy import Column, DateTime, ForeignKey, Integer, String, Text
 
 from database.db import Base
 
@@ -9,6 +9,7 @@ class Excuse(Base):
     __tablename__ = "excuses"
 
     id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"), index=True, nullable=True)
     category = Column(String, nullable=False)
     audience = Column(String, nullable=False)
     tone = Column(String, nullable=False)

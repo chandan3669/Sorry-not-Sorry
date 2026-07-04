@@ -9,15 +9,16 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from auth.auth_routes import router as auth_router
 from database.db import Base, engine
-from models import user_model
+from models import favorite_model, user_model
 from routes.excuse import router as excuse_router
+from routes.favorite import router as favorite_router
 
 
 # Create database tables on application startup.
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
-    title="ExcuseAI Backend",
+    title="Sorry Not Sorry Backend",
     description="AI-powered excuse generator API built with FastAPI.",
     version="1.0.0",
 )
@@ -32,8 +33,9 @@ app.add_middleware(
 
 app.include_router(excuse_router)
 app.include_router(auth_router)
+app.include_router(favorite_router)
 
 
 @app.get("/")
 def root():
-    return {"message": "Welcome to ExcuseAI API"}
+    return {"message": "Sorry Not Sorry"}
